@@ -1,0 +1,49 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 640" width="1024" height="640">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#141433"/><stop offset="55%" stop-color="#0b0b1a"/><stop offset="100%" stop-color="#050510"/>
+    </radialGradient>
+    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff"/><stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+  <rect width="1024" height="640" fill="url(#bg)"/>
+  <g stroke="#101030" stroke-width="1" opacity="0.6">
+    <line x1="0" y1="160" x2="1024" y2="160"/><line x1="0" y1="320" x2="1024" y2="320"/><line x1="0" y1="480" x2="1024" y2="480"/>
+  </g>
+  <!-- terminal frame -->
+  <g filter="url(#glow)">
+    <rect x="160" y="130" width="704" height="390" rx="18" fill="#070a18" stroke="#00e5ff" stroke-width="3"/>
+    <rect x="160" y="130" width="704" height="46" rx="18" fill="#0c1230" stroke="none"/>
+    <text x="185" y="159" font-family="monospace" font-size="14" fill="#00e5ff">DEPLOYMENT DASHBOARD</text>
+    <circle cx="836" cy="152" r="8" fill="#a855f7"/>
+    <circle cx="812" cy="152" r="8" fill="#00e5ff"/>
+  </g>
+  <!-- code lines -->
+  <g font-family="monospace" font-size="15" fill="#34b8e8" opacity="0.9">
+    <text x="200" y="215">$ npx hardhat compile</text>
+    <text x="200" y="252" fill="#7ef0c0">Compiled 2 contracts successfully</text>
+    <text x="200" y="289">$ npx hardhat test</text>
+    <text x="200" y="326" fill="#7ef0c0">1 passing, 0 failing (1.2s)</text>
+    <text x="200" y="363">$ deploy --network localhost</text>
+    <text x="200" y="400" fill="#a855f7">✓ Escrow.sol deployed @ 0x7f3A...</text>
+  </g>
+  <!-- deploy button -->
+  <g filter="url(#glow)">
+    <rect x="620" y="430" width="200" height="54" rx="27" fill="#0a1420" stroke="url(#neon)" stroke-width="2.5"/>
+    <path d="M700,448 L700,470 M700,448 L688,460 M700,448 L712,460" fill="none" stroke="#00e5ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="700" y="497" text-anchor="middle" font-family="monospace" font-size="13" fill="#a855f7">DEPLOY CONTRACT</text>
+  </g>
+  <!-- status chips -->
+  <g filter="url(#glow)">
+    <rect x="200" y="440" width="140" height="32" rx="16" fill="#0c1230" stroke="#7ef0c0" stroke-width="1.5"/>
+    <text x="270" y="461" text-anchor="middle" font-family="monospace" font-size="13" fill="#7ef0c0">TESTNET OK</text>
+    <rect x="360" y="440" width="140" height="32" rx="16" fill="#0c1230" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="430" y="461" text-anchor="middle" font-family="monospace" font-size="13" fill="#a855f7">VERIFIED</text>
+  </g>
+  <text x="40" y="620" font-family="monospace" font-size="14" fill="#a855f7" opacity="0.85" filter="url(#soft)">SMART CONTRACTS :: TESTNET :: DEV TOOLS</text>
+</svg>

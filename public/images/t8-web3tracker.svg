@@ -1,0 +1,51 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 640" width="1024" height="640">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#141433"/><stop offset="55%" stop-color="#0b0b1a"/><stop offset="100%" stop-color="#050510"/>
+    </radialGradient>
+    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff"/><stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+  <rect width="1024" height="640" fill="url(#bg)"/>
+  <g stroke="#101030" stroke-width="1" opacity="0.6">
+    <line x1="0" y1="160" x2="1024" y2="160"/><line x1="0" y1="320" x2="1024" y2="320"/><line x1="0" y1="480" x2="1024" y2="480"/>
+  </g>
+  <!-- wallet -->
+  <g filter="url(#glow)">
+    <rect x="330" y="210" width="330" height="230" rx="22" fill="#0a1420" stroke="#00e5ff" stroke-width="3.5"/>
+    <rect x="330" y="210" width="330" height="46" rx="22" fill="#0c1230" stroke="none"/>
+    <text x="355" y="240" font-family="monospace" font-size="15" fill="#00e5ff">MULTI-CHAIN WALLET</text>
+    <circle cx="612" cy="232" r="14" fill="#a855f7"/>
+    <circle cx="612" cy="232" r="7" fill="#0a1420"/>
+  </g>
+  <!-- chain chips -->
+  <g filter="url(#glow)">
+    <rect x="365" y="285" width="120" height="34" rx="17" fill="#0c1230" stroke="#00e5ff" stroke-width="1.5"/>
+    <text x="425" y="307" text-anchor="middle" font-family="monospace" font-size="14" fill="#00e5ff">ETH</text>
+    <rect x="505" y="285" width="120" height="34" rx="17" fill="#0c1230" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="565" y="307" text-anchor="middle" font-family="monospace" font-size="14" fill="#a855f7">BTC</text>
+    <rect x="365" y="335" width="120" height="34" rx="17" fill="#0c1230" stroke="#00e5ff" stroke-width="1.5"/>
+    <text x="425" y="357" text-anchor="middle" font-family="monospace" font-size="14" fill="#00e5ff">SOL</text>
+    <rect x="505" y="335" width="120" height="34" rx="17" fill="#0c1230" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="565" y="357" text-anchor="middle" font-family="monospace" font-size="14" fill="#a855f7">BNB</text>
+  </g>
+  <!-- net worth badge -->
+  <g filter="url(#glow)">
+    <rect x="365" y="388" width="260" height="30" rx="15" fill="#0a1420" stroke="#00e5ff" stroke-width="1.5"/>
+    <text x="495" y="408" text-anchor="middle" font-family="monospace" font-size="14" fill="#a855f7">NET WORTH $</text>
+  </g>
+  <!-- rising chart right -->
+  <g filter="url(#glow)">
+    <polyline points="740,470 790,410 835,430 880,330 920,360 960,260"
+      fill="none" stroke="url(#neon)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="960" cy="260" r="6" fill="#00e5ff"/>
+    <line x1="740" y1="470" x2="960" y2="470" stroke="#2a3a6a" stroke-width="1.5"/>
+    <path d="M952,270 L960,260 L972,272 L960,272 Z" fill="#00e5ff"/>
+  </g>
+  <text x="40" y="620" font-family="monospace" font-size="14" fill="#a855f7" opacity="0.85" filter="url(#soft)">PORTFOLIO :: DEFI :: NET WORTH</text>
+</svg>
