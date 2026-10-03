@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 
 // Adapts the 3D camera framing for the viewport so the character
 // stays well-composed on portrait (mobile) as well as landscape (desktop).
@@ -19,8 +19,7 @@ export function applyResponsiveFraming(camera: THREE.PerspectiveCamera) {
 export default function handleResize(
   renderer: THREE.WebGLRenderer,
   camera: THREE.PerspectiveCamera,
-  canvasDiv: React.RefObject<HTMLDivElement>,
-  character: THREE.Object3D
+  canvasDiv: React.RefObject<HTMLDivElement>
 ) {
   if (!canvasDiv.current) return;
   let canvas3d = canvasDiv.current.getBoundingClientRect();
@@ -30,12 +29,4 @@ export default function handleResize(
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
   applyResponsiveFraming(camera);
-  const workTrigger = ScrollTrigger.getById("work");
-  ScrollTrigger.getAll().forEach((trigger) => {
-    if (trigger != workTrigger) {
-      trigger.kill();
-    }
-  });
-  setCharTimeline(character, camera);
-  setAllTimeline();
 }

@@ -13,6 +13,8 @@ export const handleTouchMove = (
   event: TouchEvent,
   setMousePosition: (x: number, y: number) => void
 ) => {
+  // Prevent default to avoid scrolling conflicts on mobile
+  event.preventDefault();
   const mouseX = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
   const mouseY = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
   setMousePosition(mouseX, mouseY);
@@ -26,12 +28,7 @@ export const handleTouchEnd = (
     interpolationY: number
   ) => void
 ) => {
-  setTimeout(() => {
-    setMousePosition(0, 0, 0.03, 0.03);
-    setTimeout(() => {
-      setMousePosition(0, 0, 0.1, 0.2);
-    }, 1000);
-  }, 2000);
+  setMousePosition(0, 0, 0.03, 0.03);
 };
 
 export const handleHeadRotation = (
