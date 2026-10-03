@@ -310,6 +310,39 @@
   box-shadow: 0 10px 30px rgba(194, 164, 255, 0.4);
 }
 
+/* Expand/Collapse buttons for mobile */
+.expand-btn {
+  background: var(--accentColor);
+  color: #000;
+  border: 1px solid var(--accentColor);
+}
+
+.expand-btn:hover {
+  box-shadow: 0 10px 30px rgba(194, 164, 255, 0.4);
+  transform: scale(1.05);
+}
+
+.collapse-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.collapse-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.work-box-expand,
+.work-box-collapse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: none;
+  border-bottom: 1px solid #363636;
+}
+
 /* Mobile: Stack work items vertically when GSAP pinning is disabled */
 @media only screen and (max-width: 768px) {
   .work-section {
@@ -322,6 +355,14 @@
     margin-left: 0;
     padding-right: 0;
     gap: 0;
+  }
+
+  /* Cap the decorative 50000vw border lines so they don't cause overflow */
+  .work-flex::before,
+  .work-flex::after {
+    width: 100%;
+    left: 0;
+    transform: none;
   }
 
   .work-box {
@@ -366,6 +407,74 @@
   }
 
   .see-all-works p {
+    font-size: 14px;
+  }
+
+  .work-box-expand,
+  .work-box-collapse {
+    padding: 40px 20px;
+    border-bottom: 1px solid #363636;
+  }
+
+  .work-box-expand .see-all-works,
+  .work-box-collapse .see-all-works {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .work-section h2 {
+    font-size: 28px;
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+  .work-box {
+    padding: 24px 12px;
+  }
+  .work-title h3 {
+    font-size: 24px;
+    line-height: 26px;
+  }
+  .work-info h4 {
+    font-size: 16px;
+  }
+  .work-info p {
+    font-size: 13px;
+  }
+  .work-image img {
+    max-height: 180px;
+  }
+  .work-box-cta {
+    padding: 30px 15px;
+  }
+  .see-all-works h3 {
+    font-size: 20px;
+  }
+  .see-all-works p {
+    font-size: 13px;
+  }
+  .see-all-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .work-box-expand,
+  .work-box-collapse {
+    padding: 30px 15px;
+  }
+
+  .work-box-expand .see-all-works,
+  .work-box-collapse .see-all-works {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .work-box-expand .see-all-btn,
+  .work-box-collapse .see-all-btn {
+    padding: 12px 24px;
     font-size: 14px;
   }
 }

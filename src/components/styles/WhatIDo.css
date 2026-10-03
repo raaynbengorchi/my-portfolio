@@ -317,88 +317,84 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .whatIDO {
-    height: auto;
-    padding: 50px 0px;
-    padding-bottom: 50px;
-  }
-
-  .what-box-in {
-    height: auto;
-    margin-left: -50px;
-  }
-
-  .what-content {
-    padding: 40px 50px;
-    width: 500px;
-  }
-
-  .what-content p {
-    font-size: 14px;
-  }
-}
-
-@media only screen and (max-width: 900px) {
+  /* Same two-box design, stacked vertically so the same cards and
+     heading keep their hierarchy instead of being squeezed side by
+     side. No fixed heights or tiny hard-coded font sizes; every
+     dimension stays fluid from the base rules. */
   .whatIDO {
     flex-direction: column;
+    height: auto;
+    padding: clamp(48px, 8vh, 90px) 0;
   }
 
-  .what-box h2 {
-    margin: 50px 0;
-    font-size: 55px;
-    line-height: 53px;
+  .what-box {
+    justify-content: flex-start;
+    width: 100%;
+    max-width: calc(100% - 30px);
+    margin: 0 auto;
   }
 
   .what-box:first-child {
-    justify-content: left;
+    justify-content: flex-start;
   }
 
   .what-box:last-child {
     height: auto;
   }
 
-  .what-box {
-    width: 500px;
-    max-width: calc(100% - 50px);
-    margin: auto;
+  .what-box h2 {
+    text-align: left;
+    margin: clamp(30px, 6vw, 50px) 0;
+    margin-right: 0;
+  }
+
+  .what-box-in {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    gap: clamp(16px, 3vw, 24px);
   }
 
   .what-content {
     width: 100%;
-  }
-
-  .what-box-in {
-    margin-left: 0px;
-    height: auto;
-  }
-
-  .what-content {
-    padding: 30px;
-  }
-
-  .what-content p {
-    font-size: 11px;
-  }
-
-  .what-tags {
-    font-size: 11px;
-  }
-
-  .what-content h3 {
-    font-size: 25px;
+    padding: clamp(24px, 4vw, 36px);
   }
 }
 
 @media only screen and (max-width: 550px) {
-  .whatIDO {
-    place-items: inherit;
-    align-items: start;
-    justify-content: left;
-  }
-
   .what-box {
     max-width: calc(100% - 25px);
-    margin: 0;
+  }
+
+  /* Larger tap target for the expand/collapse arrow on touch devices */
+  .what-arrow {
+    width: 36px;
+    height: 36px;
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .whatIDO {
+    padding: clamp(32px, 6vh, 60px) 10px;
+  }
+  .what-box {
+    max-width: calc(100% - 20px);
+  }
+  .what-content {
+    padding: clamp(20px, 4vw, 28px);
+  }
+  .what-box h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: clamp(32px, 8vw, 40px);
+  }
+  .what-content h3 {
+    font-size: clamp(24px, 6vw, 28px);
+  }
+  .what-content p {
+    font-size: clamp(13px, 3.5vw, 14px);
+    line-height: clamp(18px, 4vw, 20px);
   }
 }
 

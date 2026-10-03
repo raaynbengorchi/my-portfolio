@@ -1,5 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
 :root {
   font-family: "Geist", sans-serif;
 
@@ -37,8 +57,8 @@ body {
   overflow: hidden;
 }
 
-/* Allow scrolling on mobile */
-@media only screen and (max-width: 768px) {
+/* Allow scrolling on mobile/tablet */
+@media only screen and (max-width: 1024px) {
   body {
     overflow: auto !important;
     height: auto !important;
@@ -187,5 +207,34 @@ body {
 @media screen and (max-width: 900px) {
   .techstack h2 {
     font-size: 40px;
+  }
+}
+
+/* Global mobile fixes to prevent horizontal overflow */
+@media only screen and (max-width: 768px) {
+  body {
+    --cWidth: calc(100% - 20px);
+    overflow-x: hidden !important;
+  }
+  html {
+    overflow-x: hidden !important;
+  }
+  .container-main {
+    overflow-x: hidden;
+  }
+  /* Ensure all images and videos are constrained */
+  img, video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  /* Prevent any element from causing horizontal scroll */
+  * {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    --cWidth: calc(100% - 16px);
   }
 }

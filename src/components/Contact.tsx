@@ -9,12 +9,65 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   useEffect(() => {
+    // Mobile: use native scroll, Desktop: use Lenis scroll
+    const isMobile = window.innerWidth <= 1024;
+
+    if (isMobile) {
+      // Mobile: lightweight staggered reveal with native scroll
+      const mobileTween = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".contact-section",
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Animate title from bottom
+      mobileTween.fromTo(
+        ".contact-section h3",
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        }
+      );
+
+      // Animate contact boxes with stagger from bottom
+      mobileTween.fromTo(
+        ".contact-box",
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "-=0.4"
+      );
+
+      return () => {
+        mobileTween.scrollTrigger?.kill();
+        mobileTween.kill();
+      };
+    }
+
+    // Desktop: use Lenis scroll
     const contactTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".contact-section",
         start: "top 80%",
         end: "bottom center",
         toggleActions: "play none none none",
+        scroller: "#smooth-wrapper",
       },
     });
 

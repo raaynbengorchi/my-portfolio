@@ -239,3 +239,128 @@
     margin-top: 3px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .techstack-new {
+    padding: 60px 10px;
+  }
+  .techstack-content {
+    padding: 0 5px;
+  }
+  .techstack-content h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  .techstack-pyramid {
+    gap: 5px;
+  }
+  .techstack-row {
+    gap: 5px;
+  }
+  .techstack-item {
+    width: 36px;
+    height: 46px;
+    padding: 4px;
+    border-radius: 6px;
+  }
+  .techstack-item img {
+    width: 18px;
+    height: 18px;
+  }
+  .techstack-item span {
+    font-size: 5.5px;
+    max-width: 34px;
+    margin-top: 2px;
+  }
+}
+
+/* Mobile: Scale down desktop pyramid smoothly */
+@media screen and (max-width: 768px) {
+  .techstack-new {
+    min-height: auto;
+    padding: 80px 15px;
+  }
+
+  .techstack-content {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .techstack-content h2 {
+    font-size: clamp(32px, 7vw, 42px);
+    margin-bottom: 40px;
+  }
+
+  .techstack-pyramid {
+    gap: 10px;
+  }
+
+  .techstack-row {
+    gap: 8px;
+  }
+
+  .techstack-item {
+    width: 48px;
+    height: 60px;
+    padding: 6px;
+    border-radius: 8px;
+  }
+
+  .techstack-item img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .techstack-item span {
+    font-size: 8px;
+    max-width: 44px;
+  }
+
+  /* Ensure bottom rows (fewer items) center properly */
+  .techstack-row:nth-last-child(1),
+  .techstack-row:nth-last-child(2) {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .techstack-new {
+    padding: 60px 10px;
+  }
+  .techstack-content {
+    padding: 0 5px;
+  }
+  .techstack-content h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  .techstack-pyramid {
+    gap: 5px;
+  }
+  .techstack-row {
+    gap: 5px;
+  }
+  .techstack-item {
+    width: 36px;
+    height: 46px;
+    padding: 4px;
+    border-radius: 6px;
+  }
+  .techstack-item img {
+    width: 18px;
+    height: 18px;
+  }
+  .techstack-item span {
+    font-size: 5.5px;
+    max-width: 34px;
+    margin-top: 2px;
+  }
+
+  /* Ensure bottom rows center properly on small screens */
+  .techstack-row:nth-last-child(1),
+  .techstack-row:nth-last-child(2) {
+    justify-content: center;
+    width: 100%;
+  }
+}

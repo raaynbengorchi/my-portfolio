@@ -65,3 +65,13 @@
     padding: 12px 28px;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .cta-section {
+    padding: 40px 15px;
+  }
+  .cta-btn {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+}

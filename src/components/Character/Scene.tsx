@@ -3,7 +3,7 @@ import * as THREE from "three";
 import setCharacter from "./utils/character";
 import setLighting from "./utils/lighting";
 import { useLoading } from "../../context/LoadingProvider";
-import handleResize from "./utils/resizeUtils";
+import handleResize, { applyResponsiveFraming } from "./utils/resizeUtils";
 import {
   handleMouseMove,
   handleTouchEnd,
@@ -20,6 +20,7 @@ const Scene = () => {
   const { setLoading } = useLoading();
 
   const [character, setChar] = useState<THREE.Object3D | null>(null);
+  const isMobile = window.innerWidth <= 768;
   useEffect(() => {
     if (canvasDiv.current) {
       let rect = canvasDiv.current.getBoundingClientRect();
@@ -29,11 +30,13 @@ const Scene = () => {
 
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: window.devicePixelRatio < 2,
+        antialias: isMobile ? true : window.devicePixelRatio < 2,
         powerPreference: "high-performance",
       });
+      // Use higher pixel ratio on mobile for crisp rendering, capped at 2 for performance
+      const pixelRatio = isMobile ? Math.min(window.devicePixelRatio, 2) : Math.min(window.devicePixelRatio, 2);
+      renderer.setPixelRatio(pixelRatio);
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -42,7 +45,7 @@ const Scene = () => {
       camera.position.z = 10;
       camera.position.set(0, 13.1, 24.7);
       camera.zoom = 1.1;
-      camera.updateProjectionMatrix();
+      applyResponsiveFraming(camera);
 
       let headBone: THREE.Object3D | null = null;
       let screenLight: any | null = null;

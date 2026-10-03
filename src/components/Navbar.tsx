@@ -30,38 +30,63 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    // Initialize Lenis smooth scroll
-    lenis = new Lenis({
-      duration: 1.7,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1.7,
-      touchMultiplier: 2,
-      infinite: false,
-    });
+    // Only initialize Lenis on desktop (>1024px)
+    const isDesktop = window.innerWidth > 1024;
+    
+    if (isDesktop) {
+      // Initialize Lenis smooth scroll
+      lenis = new Lenis({
+        duration: 1.7,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: "vertical",
+        gestureOrientation: "vertical",
+        smoothWheel: true,
+        wheelMultiplier: 1.7,
+        touchMultiplier: 2,
+        infinite: false,
+      });
 
-    // Start paused
-    lenis.stop();
+      // Connect Lenis with ScrollTrigger using scrollerProxy
+      ScrollTrigger.scrollerProxy("#smooth-wrapper", {
+        scrollTop(value?: number) {
+          if (arguments.length && value !== undefined) {
+            lenis?.scrollTo(value, { immediate: true });
+          }
+          return lenis?.scroll ?? 0;
+        },
+        getBoundingClientRect() {
+          return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight,
+          };
+        },
+      });
 
-    // Handle smooth scroll animation frame
-    function raf(time: number) {
-      lenis?.raf(time);
-      requestAnimationFrame(raf);
+      // Sync ScrollTrigger with Lenis
+      lenis.on("scroll", ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis?.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+
+      // Start paused
+      lenis.stop();
     }
-    requestAnimationFrame(raf);
 
     // Handle navigation links
     let links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
+        if (window.innerWidth > 1024 && lenis) {
           e.preventDefault();
           let elem = e.currentTarget as HTMLAnchorElement;
           let section = elem.getAttribute("data-href");
-          if (section && lenis) {
+          if (section) {
             const target = document.querySelector(section) as HTMLElement;
             if (target) {
               lenis.scrollTo(target, {
@@ -75,12 +100,19 @@ const Navbar = () => {
     });
 
     // Handle resize
-    window.addEventListener("resize", () => {
+    const handleResize = () => {
       lenis?.resize();
-    });
+      // Reinitialize Lenis if crossing desktop/mobile boundary
+      const newIsDesktop = window.innerWidth > 1024;
+      if (newIsDesktop !== isDesktop) {
+        window.location.reload(); // Simple approach: reload on breakpoint change
+      }
+    };
+    window.addEventListener("resize", handleResize);
 
     return () => {
       lenis?.destroy();
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   return (

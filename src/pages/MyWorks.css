@@ -161,3 +161,29 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .myworks-page {
+    padding: 45px 14px;
+  }
+
+  .myworks-header {
+    margin-bottom: 40px;
+  }
+
+  .myworks-header h1 {
+    font-size: 34px;
+  }
+
+  .myworks-header p {
+    font-size: 15px;
+  }
+
+  .myworks-card-info {
+    padding: 18px;
+  }
+
+  .myworks-card-image {
+    height: 180px;
+  }
+}

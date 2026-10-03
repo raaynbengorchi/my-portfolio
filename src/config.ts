@@ -297,7 +297,7 @@ export const config = {
     contact: {
         email: "rayanbengourchii@gmail.com",
         github: "https://github.com/raaynbengorchi",
-        linkedin: "https://linkedin.com/in/red1-for-hek",
+        linkedin: "https://linkedin.com/in/rayan-bengourchi-207456440/?isSelfProfile=true",
         whatsapp: "https://wa.me/212617660256",
         instagram: "https://www.instagram.com/rayhaaan8256/"
     },

@@ -61,3 +61,76 @@
     font-size: 28px;
   }
 }
+
+/* Mobile/Tablet: keep social icons accessible as a compact row, bottom-left */
+@media only screen and (max-width: 1024px) {
+  .icons-section {
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .social-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    left: 20px;
+    bottom: 16px;
+    z-index: 999;
+    padding: 0;
+  }
+
+  .social-icons span {
+    width: 34px;
+    height: 34px;
+  }
+
+  .social-icons a {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .icons-section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    transform: none;
+    z-index: 99;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+  .social-icons {
+    left: 15px;
+    bottom: 12px;
+    gap: 12px;
+  }
+  .social-icons span {
+    width: 30px;
+    height: 30px;
+  }
+  .social-icons a {
+    font-size: 16px;
+  }
+  .check-line {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .social-icons {
+    left: 10px;
+    bottom: 10px;
+    gap: 10px;
+  }
+  .social-icons span {
+    width: 28px;
+    height: 28px;
+  }
+  .social-icons a {
+    font-size: 15px;
+  }
+}
